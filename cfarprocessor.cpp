@@ -1,6 +1,6 @@
 #include "cfarprocessor.h"
 
-CfarProcessor::CfarProcessor(QObject *parent) : QObject(parent) {}
+CfarProcessor::CfarProcessor(){}
 
 bool CfarProcessor::loadMatrix(const QString &filePath, qint64 X, qint64 Y, QVector<float> &outMatrix, QString &errorStr) {
     QFile file(filePath);

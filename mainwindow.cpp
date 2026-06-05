@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "cfarprocessor.h"
 #include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -44,19 +43,18 @@ void MainWindow::on_run_clicked()
         return;
     }
 
-    CfarProcessor *processor = new CfarProcessor(this);
     QVector<float> matrix;
     QString errorStr;
 
-    if (!processor->loadMatrix(fileName, x, y, matrix, errorStr)) {
+    if (!processor.loadMatrix(fileName, x, y, matrix, errorStr)) {
         QMessageBox::critical(this, "Ошибка валидации файла", errorStr);
         ui->run->setEnabled(true);
         return;
     }
 
     QFuture<QVector<CfarPeak>> future = QtConcurrent::run([=, matrix = std::move(matrix)]() {
-        QVector<double> matrixI = processor->buildIntegralMatrix(matrix, x, y);
-        return processor->runCfar(matrix, matrixI, x, y, xb, yb, xs, ys);
+        QVector<double> matrixI = processor.buildIntegralMatrix(matrix, x, y);
+        return processor.runCfar(matrix, matrixI, x, y, xb, yb, xs, ys);
     });
 
     QFutureWatcher<QVector<CfarPeak>> *watcher = new QFutureWatcher<QVector<CfarPeak>>(this);

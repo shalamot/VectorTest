@@ -15,11 +15,10 @@ struct CfarPeak {
     float value;
 };
 
-class CfarProcessor: public QObject
+class CfarProcessor
 {
-    Q_OBJECT
 public:
-    explicit CfarProcessor(QObject *parent = nullptr);
+    explicit CfarProcessor();
 
     bool loadMatrix(const QString &filePath, qint64 X, qint64 Y, QVector<float> &outMatrix, QString &errorStr);
 

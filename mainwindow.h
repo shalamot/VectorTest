@@ -10,6 +10,7 @@
 #include <QFuture>
 #include <QtConcurrent/QtConcurrentRun>
 #include <QFutureWatcher>
+#include "cfarprocessor.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -41,6 +42,7 @@ private:
     qint64 xs;
     qint64 yb;
     qint64 ys;
+    CfarProcessor processor;
 
 };
 #endif // MAINWINDOW_H
