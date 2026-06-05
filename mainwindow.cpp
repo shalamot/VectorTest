@@ -16,7 +16,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
-    QIntValidator* validator = new QIntValidator;
+    validator();
     ui->lineX->setValidator(validator);
     ui->lineY->setValidator(validator);
     ui->lineXs->setValidator(validator);
