@@ -34,7 +34,7 @@ private slots:
     void getDataFromLines();
 
 private:
-    QIntValidator validator;
+    QIntValidator* validator;
     Ui::MainWindow *ui;
     QString fileName;
     qint64 x;

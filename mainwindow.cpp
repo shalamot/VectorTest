@@ -11,12 +11,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete validator;
     delete ui;
 }
 
 void MainWindow::init()
 {
-    validator();
+    validator = new QIntValidator;
     ui->lineX->setValidator(validator);
     ui->lineY->setValidator(validator);
     ui->lineXs->setValidator(validator);
